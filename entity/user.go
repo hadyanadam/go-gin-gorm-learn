@@ -7,5 +7,6 @@ type User struct {
 	Email    string `gorm:"uniqueIndex;type:varchar(255)" json:"email"`
 	Password string `gorm:"->;<-;not null" json:"-"`
 	Token    string `gorm:"-" json:"token,omitempty"`
+	Books 	*[]Book `json:"books,omitempty"`
 }
 

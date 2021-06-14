@@ -1,6 +1,8 @@
 package main
 
 import (
+	"os"
+
 	"github.com/gin-gonic/gin"
 	"github.com/hadyanadam/go-gorm-gin/config"
 	"github.com/hadyanadam/go-gorm-gin/controller"
@@ -49,5 +51,9 @@ func main() {
 		bookRoutes.PUT("/:id", bookController.Update)
 		bookRoutes.DELETE("/:id", bookController.Delete)
 	}
-	r.Run()
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "5000"
+	}
+	r.Run(":" + port)
 }
